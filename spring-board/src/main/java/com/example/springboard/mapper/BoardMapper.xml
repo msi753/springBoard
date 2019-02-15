@@ -76,4 +76,5 @@
   			WHERE board_no=#{boardNo}
   	</delete>
   	
+  	
   </mapper>

@@ -31,3 +31,4 @@ public interface BoardMapper {
 	//글 삭제 처리
 	int deleteBoard(int boardNo);
 }
+

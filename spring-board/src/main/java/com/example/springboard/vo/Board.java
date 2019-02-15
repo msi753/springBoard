@@ -7,7 +7,6 @@ public class Board {
     private String boardContent;
     private String boardUser;
     private String boardDate;
-	
     public int getBoardNo() {
 		return boardNo;
 	}

@@ -27,6 +27,5 @@
 <a th:if="${currentPage > 1}" th:href="@{/boardList(currentPage=${currentPage-1})}" th:text="[이전]"></a>
 <a th:if="${currentPage < lastPage}" th:href="@{/boardList(currentPage=${currentPage+1})}" th:text="[다음]"></a>
 <a th:href="@{/boardList(currentPage=${lastPage})}" th:text="[마지막페이지]"></a>	
-
 </body>
 </html>
