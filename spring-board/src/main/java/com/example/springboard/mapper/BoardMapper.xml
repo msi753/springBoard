@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace = "com.example.springboard.mapper.BoardMapper">
+  	
+  	<!-- 게시판에 글을 '입력'하는 쿼리문 -->
+  	<insert id="insertBoard"
+  			parameterType="com.example.springboard.vo.Board">
+  			INSERT INTO board(
+	  				board_pw, 
+	  				board_title, 
+	  				board_content, 
+	  				board_user, 
+	  				board_date
+	  				) 
+  				VALUES(
+  					#{boardPw},
+  					#{boardTitle},
+  					#{boardContent},
+  					#{boardUser},
+  					now()
+  					)
+  	</insert>
+  	
+  	<!-- boardNo가 일치하는 게시글 상세보기를 위한 쿼리문 -->
+  	<select id="selectBoard"
+  			parameterType="int"
+  			resultType="com.example.springboard.vo.Board">
+  			SELECT
+				board_title as boardTitle, 
+				board_content as boardContent, 
+				board_user as boardUser, 
+				board_date as boardDate
+			FROM board 
+			WHERE board_no=#{boardNo}		
+  	</select>
+	
+	<!-- 페이징하는 쿼리문 -->
+	<!-- <resultMap type="" id=""></resultMap>컬럼명 일치를 위한 코드 -->
+  	<select id="selectBoardList"
+  			parameterType="java.util.Map"	
+  			resultType="com.example.springboard.vo.Board">
+  			<!-- Map인터페이스 -->
+  			SELECT 
+  				board_no as boardNo, 
+  				board_title as boardTitle, 
+  				board_user as boardUser, 
+  				board_date as boardDate 
+  			FROM board 
+  			ORDER BY board_date DESC 
+  			LIMIT #{currentPage}, #{rowPerPage} 			
+  	</select>
+  	
+  	<!-- 게시글의 수를 세는 쿼리문 -->
+  	<select id="selectBoardCount"
+  			resultType="int">
+  			SELECT COUNT(*) 
+  			FROM board
+  	</select>
+  	
+  	<!-- boardNo와 boardPw가 일치하는 경우 board의 내용을 '수정'하는 쿼리문 -->
+  	<update id="updateBoard"
+  			parameterType="com.example.springboard.vo.Board">
+  			UPDATE board 
+  			SET 
+  				board_title=#{boardTitle}, 
+  				board_content=#{boardContent} 
+  			WHERE board_pw=#{boardPw}
+  	</update>
+  	
+  	<!-- boardNo와 boardPw를 Board객체를 통해 받은 후 '삭제'하는 쿼리문 -->
+  	<delete id="deleteBoard"
+  			parameterType="com.example.springboard.vo.Board">
+  			DELETE FROM board 
+  			WHERE board_no=#{boardNo}
+  	</delete>
+  	
+  </mapper>

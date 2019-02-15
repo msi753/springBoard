@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>게시글 목록</title>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td>No</td>
+			<td>글제목</td>
+			<td>글쓴이</td>
+			<td>작성일자</td>
+			<td>수정</td>
+			<td>삭제</td>			
+		</tr>
+			<tr th:each="b : ${list}">
+			<td th:text="${b.boardNo}"></td>
+			<td th:text="${b.boardTitle}"></td>
+			<td th:text="${b.boardUser}"></td>
+			<td th:text="${b.boardDate}"></td>
+			<td><a th:text="수정" th:href="@{/boardView(boardNo=${b.boardNo})}"></a></td>
+			<td><a th:text="삭제" th:href="@{/boardRemove(boardNo=${b.boardNo})}"></a></td>
+		</tr>		
+	</table>
+<a th:href="@{/boardList(currentPage=1)}" th:text="[처음페이지]"></a>	
+<a th:if="${currentPage > 1}" th:href="@{/boardList(currentPage=${currentPage-1})}" th:text="[이전]"></a>
+<a th:if="${currentPage < lastPage}" th:href="@{/boardList(currentPage=${currentPage+1})}" th:text="[다음]"></a>
+<a th:href="@{/boardList(currentPage=${lastPage})}" th:text="[마지막페이지]"></a>	
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>수정 화면</title>
+</head>
+<body>
+	<form action="/boardModify" method="post">
+		제목: <input th:value="${board.boardTitle}" th:name="boardTitle"><br><br>
+		내용: <textarea th:field="*{board.boardContent}" th:name="boardContent"></textarea><br><br>
+		글쓴이: <input th:value="${board.boardUser}" readonly><br><br>
+		작성일자: <input th:value="${board.boardDate}" readonly><br><br>
+		비밀번호: <input type="password" th:name="boardPw"><br><br>	
+			<input type="submit" th:value="수정">
+	</form>
+	<a th:href="@{/boardList}"><button>리스트로 돌아가기</button></a>
+</body>
+</html>

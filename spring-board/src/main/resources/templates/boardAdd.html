@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<form action="/boardAdd" method="post">
+		글 제목: <input type="text" name="boardTitle"><br><br>
+		내용: <textarea rows="10" cols="50" name="boardContent"></textarea><br><br>
+		글쓴이: <input type="text" name="boardUser"><br><br>
+		비밀번호: <input type="password" name="boardPw"><br><br>
+			<input type="submit" value="글 작성">
+			<input type="reset" value="초기화">
+	</form>
+</body>
+
+</html>
