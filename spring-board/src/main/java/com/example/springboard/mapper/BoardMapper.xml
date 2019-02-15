@@ -48,7 +48,7 @@
   				board_user as boardUser, 
   				board_date as boardDate 
   			FROM board 
-  			ORDER BY board_date DESC 
+  			ORDER BY board_no DESC 
   			LIMIT #{currentPage}, #{rowPerPage} 			
   	</select>
   	
@@ -73,7 +73,7 @@
   	<delete id="deleteBoard"
   			parameterType="com.example.springboard.vo.Board">
   			DELETE FROM board 
-  			WHERE board_no=#{boardNo}
+  			WHERE board_no=#{boardNo} and board_pw=#{boardPw}
   	</delete>
   	
   	

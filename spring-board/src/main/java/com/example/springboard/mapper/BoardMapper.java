@@ -29,6 +29,6 @@ public interface BoardMapper {
 	int updateBoard(Board board);
 	
 	//글 삭제 처리
-	int deleteBoard(int boardNo);
+	int deleteBoard(Board board);
 }
 

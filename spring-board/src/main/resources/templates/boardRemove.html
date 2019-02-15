@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<form action="/boardRemoveAction" method="post">
+		글 번호: <input th:value="${boardNo}" type="text" name="boardNo" readonly="readonly"><br><br>
+		비밀번호를 입력해 주세요. <input type="password" name="boardPw"><br><br>
+			<input type="submit" value="글 삭제">
+	</form>
+	<a th:href="@{/boardList}"><button>리스트로 돌아가기</button></a>
+
+	
+</body>
+</html>

@@ -58,8 +58,8 @@ public class BoardService {
 	}
 	
 	//게시글 삭제
-	public int removeBoard(int boardNo) {
-		return boardMapper.deleteBoard(boardNo);
+	public int removeBoard(Board board) {
+		return boardMapper.deleteBoard(board);
 	}
 	
 	public int getBoardCount() {

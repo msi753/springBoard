@@ -7,7 +7,7 @@
 <body>
 	<form action="/boardModify" method="post">
 		제목: <input th:value="${board.boardTitle}" th:name="boardTitle"><br><br>
-		내용: <textarea th:field="*{board.boardContent}" th:name="boardContent"></textarea><br><br>
+		내용: <textarea th:text="${board.boardContent}" th:name="boardContent"></textarea><br><br>
 		글쓴이: <input th:value="${board.boardUser}" readonly><br><br>
 		작성일자: <input th:value="${board.boardDate}" readonly><br><br>
 		비밀번호: <input type="password" th:name="boardPw"><br><br>	
