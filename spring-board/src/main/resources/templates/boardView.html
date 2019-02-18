@@ -3,16 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <title>수정 화면</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 </head>
 <body>
-	<form action="/boardModify" method="post">
-		제목: <input th:value="${board.boardTitle}" th:name="boardTitle"><br><br>
-		내용: <textarea th:text="${board.boardContent}" th:name="boardContent"></textarea><br><br>
-		글쓴이: <input th:value="${board.boardUser}" readonly><br><br>
-		작성일자: <input th:value="${board.boardDate}" readonly><br><br>
-		비밀번호: <input type="password" th:name="boardPw"><br><br>	
-			<input type="submit" th:value="수정">
-	</form>
-	<a th:href="@{/boardList}"><button>리스트로 돌아가기</button></a>
+<br>
+<div class="container">
+	<h2>글 상세</h2>
+		<table class="table table-hover">
+			<tr>
+				<th>제목:</th>
+				<td th:value="${board.boardTitle}"></td>
+			</tr>	
+			<tr>
+				<th>내용:</th>
+				<td th:text="${board.boardContent}"></td>
+			</tr>
+			<tr>	
+				<th>작성자:</th>
+				<td th:value="${board.boardUser}"></td>
+			</tr>
+			<tr>	
+				<th>작성일자</th>	
+				<td th:value="${board.boardDate}"></td>
+			</tr>	
+		</table>					    			    		    
+	<a th:href="@{/boardModify(boardNo=${board.boardNo})}" class="btn btn-primary">수정</a>	
+	<a th:href="@{/boardRemove(boardNo=${board.boardNo})}" class="btn btn-primary">삭제</a>
+	<a th:href="@{/boardList}" class="btn btn-primary">리스트로 돌아가기</a>
+</div>			
 </body>
 </html>

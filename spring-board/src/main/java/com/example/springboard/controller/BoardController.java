@@ -58,15 +58,21 @@ public class BoardController {
         return "boardView";
     }
     
-    //글 수정 요청
-    @RequestMapping(value="/boardModify", method=RequestMethod.POST)
-    public String boardModify(Board board) {
+    // 글 수정 화면 요청
+    @GetMapping(value="/boardModify")
+    public String boardModify() {
+		return null;
+    }
+    
+    // 글 수정 요청
+    @RequestMapping(value="/boardModifyAction", method=RequestMethod.POST)
+    public String boardModifyAction(Board board) {
         System.out.println("boardModify 요청");
     	boardService.modifyBoard(board);
     	return "redirect:/boardList";
     }
     
-    //글 삭제 요청
+    // 글 삭제 요청
     @RequestMapping(value="/boardRemoveAction", method=RequestMethod.POST)
     public String boardRemoveAction(Board board) {
         System.out.println("boardRemove 액션");
@@ -74,7 +80,7 @@ public class BoardController {
     	return "redirect:/boardList";
     }
     
-    //글 삭제 화면 요청
+    // 글 삭제 화면 요청
     @GetMapping(value="/boardRemove")
     public String boardRemove(Model model, @RequestParam(value="boardNo") int boardNo) {
         System.out.println("boardRemove 화면");

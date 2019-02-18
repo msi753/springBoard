@@ -2,15 +2,34 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 </head>
 <body>
-	<form action="/boardAdd" method="post">
-		글 제목: <input type="text" name="boardTitle"><br><br>
-		내용: <textarea rows="10" cols="50" name="boardContent"></textarea><br><br>
-		글쓴이: <input type="text" name="boardUser"><br><br>
-		비밀번호: <input type="password" name="boardPw"><br><br>
-			<input type="submit" value="글 작성">
-			<input type="reset" value="초기화">
-	</form>
+<br>
+<div class="container">
+  <h2>글 입력</h2>
+    <div class="form-group">
+		<form action="/boardAdd" method="post">
+			<div class="form-group">
+		      <label for="title">제목:</label>
+		      <input type="text" class="form-control" id="title" name="boardTitle">
+		    </div>
+		    <div class="form-group">
+		      <label for="content">내용:</label>
+		      <textarea class="form-control" rows="5" id="content" name="boardContent"></textarea>
+		    </div>   
+			<div class="form-group">
+		      <label for="usr">글쓴이:</label>
+		      <input type="text" class="form-control" id="usr" name="boardUser">
+		    </div>     
+		    <div class="form-group">
+		      <label for="pwd">비밀번호:</label>
+		      <input type="password" class="form-control" id="pwd" name="boardPw">
+		    </div>    
+    		<button type="submit" class="btn btn-primary">글 작성</button>
+		    <button type="reset" class="btn btn-primary">초기화</button>
+		</form>
+	</div>
+</div>	
 </body>
 </html>
