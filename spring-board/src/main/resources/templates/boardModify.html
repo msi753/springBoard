@@ -4,13 +4,29 @@
 <meta charset="UTF-8">
 <title>수정 화면</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<!-- jquery를 사용하기 위한 소스코드 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	/* 유효성 검사 */
+	$(document).ready(function(){
+		$('#submit').click(function(){	/* id라서 #으로 */
+			$('#boardModifyAction').submit(function(event){
+				if($('#pwd').val().length<1) {
+					$('#pwd').attr('placeholder', '비밀번호를 입력해 주세요.');
+					$('#pwd').focus();
+					return false;	/* submit실패 */
+				}
+			});
+		});
+	});
+</script>
 </head>
 <body>
 <br>
 <div class="container">
-	<h2>글 수정</h2>
+	<h2>수정화면</h2>
 		<div class="form-group">
-			<form action="/boardModifyAction" method="post">
+			<form action="/boardModifyAction" id="boardModifyAction" method="post">
 				<div class="form-group">
 			      <label for="title">제목:</label>
 			      <input type="text" class="form-control" id="title" name="boardTitle" th:value="${board.boardTitle}">
@@ -21,17 +37,23 @@
 			    </div>
 				<div class="form-group">
 			      <label for="usr">작성자:</label>
-			      <input type="text" class="form-control" id="usr" th:value="${board.boardUser}" readonly="readonly">
+			      <input type="text" class="form-control" id="usr" name="boardUser" th:value="${board.boardUser}">
 			    </div>	
 				<div class="form-group">
 			      <label for="date">작성일자:</label>
 			      <input type="text" class="form-control" id="date" th:value="${board.boardDate}" readonly="readonly">
-			    </div>				    			    		    
+			    </div>	
+			    <div class="form-group">
+			      <label for="pwd">비밀번호:</label>
+			      <input type="password" class="form-control" id="pwd" name="boardPw">
+			    </div>	
+			    <div class="form-group">
+			      <input type="submit" class="btn btn-primary" id="submit" value="수정">
+			    </div>	
 			</form>
 		</div>
-	<a th:href="@{/boardModify(boardNo=${board.boardNo})}" class="btn btn-primary">수정</a>	
-	<a th:href="@{/boardRemove(boardNo=${board.boardNo})}" class="btn btn-primary">삭제</a>
-	<a th:href="@{/boardList}" class="btn btn-primary">리스트로 돌아가기</a>
+	<a th:href="@{/boardRemove(boardNo=${board.boardNo})}" class="btn btn-primary">삭제화면으로</a>
+	<a th:href="@{/boardList}" class="btn btn-primary">리스트로</a>
 </div>			
 </body>
 </html>

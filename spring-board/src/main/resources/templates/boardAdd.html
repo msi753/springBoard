@@ -2,14 +2,47 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<!-- jquery를 사용하기 위한 소스코드 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- 부트스트랩 css 추가 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<script>
+	/* 유효성 검사 */
+	$(document).ready(function(){
+		$('#submit').click(function(){	/* id라서 #으로 */
+			$('#boardAdd').submit(function(event){
+				if($('#title').val().length<1) {
+					$('#title').attr('placeholder', '한 글자 이상 입력해 주세요.');
+					$('#title').focus();
+					return false;	/* submit실패 */
+				} else if($('#content').val().length<1) {
+					$('#content').attr('placeholder', '한 글자 이상 입력해 주세요.');
+					$('#content').focus();
+					return false;
+				} else if($('#usr').val().length<1) {
+					$('#usr').attr('placeholder', '한 글자 이상 입력해 주세요.');
+					$('#usr').focus();
+					return false;
+				} else if($('#pwd').val().length<1) {
+					$('#pwd').attr('placeholder', '한 글자 이상 입력해 주세요.');
+					$('#pwd').focus();
+					return false;
+				}
+			});
+		});
+	});
+</script>
+
+
+
+
 </head>
 <body>
 <br>
 <div class="container">
   <h2>글 입력</h2>
     <div class="form-group">
-		<form action="/boardAdd" method="post">
+		<form action="/boardAdd" id="boardAdd" method="post">
 			<div class="form-group">
 		      <label for="title">제목:</label>
 		      <input type="text" class="form-control" id="title" name="boardTitle">
@@ -26,8 +59,9 @@
 		      <label for="pwd">비밀번호:</label>
 		      <input type="password" class="form-control" id="pwd" name="boardPw">
 		    </div>    
-    		<button type="submit" class="btn btn-primary">글 작성</button>
+    		<button type="submit" id="submit" class="btn btn-primary">글 작성</button>
 		    <button type="reset" class="btn btn-primary">초기화</button>
+		    <a th:href="@{/boardList}" class="btn btn-primary">리스트로 돌아가기</a>
 		</form>
 	</div>
 </div>	

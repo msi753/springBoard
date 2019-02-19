@@ -60,8 +60,11 @@ public class BoardController {
     
     // 글 수정 화면 요청
     @GetMapping(value="/boardModify")
-    public String boardModify() {
-		return null;
+    public String boardModify(Model model, @RequestParam(value="boardNo") int boardNo) {
+        System.out.println("boardModify 화면 요청");
+    	Board board = boardService.getBoard(boardNo);
+        model.addAttribute("board", board);
+    	return "boardModify";
     }
     
     // 글 수정 요청

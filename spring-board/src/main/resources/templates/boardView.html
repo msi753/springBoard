@@ -8,11 +8,15 @@
 <body>
 <br>
 <div class="container">
-	<h2>글 상세</h2>
+	<h2>상세 내용</h2>
 		<table class="table table-hover">
 			<tr>
+				<th>No:</th> 
+				<td><a th:text="${board.boardNo}"></a></td>
+			</tr>
+			<tr>
 				<th>제목:</th>
-				<td th:value="${board.boardTitle}"></td>
+				<td th:text="${board.boardTitle}"></td>
 			</tr>	
 			<tr>
 				<th>내용:</th>
@@ -20,16 +24,16 @@
 			</tr>
 			<tr>	
 				<th>작성자:</th>
-				<td th:value="${board.boardUser}"></td>
+				<td th:text="${board.boardUser}"></td>
 			</tr>
 			<tr>	
-				<th>작성일자</th>	
-				<td th:value="${board.boardDate}"></td>
+				<th>작성일자:</th>	
+				<td th:text="${board.boardDate}"></td>
 			</tr>	
 		</table>					    			    		    
-	<a th:href="@{/boardModify(boardNo=${board.boardNo})}" class="btn btn-primary">수정</a>	
-	<a th:href="@{/boardRemove(boardNo=${board.boardNo})}" class="btn btn-primary">삭제</a>
-	<a th:href="@{/boardList}" class="btn btn-primary">리스트로 돌아가기</a>
+	<a th:href="@{/boardModify(boardNo=${board.boardNo})}" class="btn btn-primary">수정화면으로</a>	
+	<a th:href="@{/boardRemove(boardNo=${board.boardNo})}" class="btn btn-primary">삭제화면으로</a>
+	<a th:href="@{/boardList}" class="btn btn-primary">리스트로</a>
 </div>			
 </body>
 </html>

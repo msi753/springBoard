@@ -28,6 +28,7 @@
   			parameterType="int"
   			resultType="com.example.springboard.vo.Board">
   			SELECT
+  				board_no as boardNo,
 				board_title as boardTitle, 
 				board_content as boardContent, 
 				board_user as boardUser, 
@@ -65,7 +66,8 @@
   			UPDATE board 
   			SET 
   				board_title=#{boardTitle}, 
-  				board_content=#{boardContent} 
+  				board_content=#{boardContent}, 
+  				board_user=#{boardUser}
   			WHERE board_pw=#{boardPw}
   	</update>
   	
