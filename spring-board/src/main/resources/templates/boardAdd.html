@@ -42,7 +42,7 @@
 <div class="container">
   <h2>글 입력</h2>
     <div class="form-group">
-		<form action="/boardAdd" id="boardAdd" method="post">
+		<form action="/boardAdd" id="boardAdd" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 		      <label for="title">제목:</label>
 		      <input type="text" class="form-control" id="title" name="boardTitle">
@@ -58,6 +58,10 @@
 		    <div class="form-group">
 		      <label for="pwd">비밀번호:</label>
 		      <input type="password" class="form-control" id="pwd" name="boardPw">
+		    </div>    
+		   <div class="form-group">
+		      <label for="files">첨부파일:</label>
+		      <input type="file" class="form-control" id="files" name="files">
 		    </div>    
     		<button type="submit" id="submit" class="btn btn-primary">글 작성</button>
 		    <button type="reset" class="btn btn-primary">초기화</button>

@@ -4,14 +4,14 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class Board {
+public class BoardRequest {
     private int boardNo;
-    private String boardPw; 
-    private String boardTitle; 
-    private String boardContent; 
-    private String boardUser; 
+    private String boardPw;
+    private String boardTitle;
+    private String boardContent;
+    private String boardUser;
     private String boardDate;
-    
+    private List<MultipartFile> files;	//MultipartFile[] fileList; 파일 여러개 받기
 	public int getBoardNo() {
 		return boardNo;
 	}
@@ -48,9 +48,10 @@ public class Board {
 	public void setBoardDate(String boardDate) {
 		this.boardDate = boardDate;
 	}
-    @Override
-    public String toString() {
-        return "Board [boardNo=" + boardNo + ", boardPw=" + boardPw + ", boardTitle=" + boardTitle + ", boardContent="
-                + boardContent + ", boardUser=" + boardUser + ", boardDate=" + boardDate + "]";
-    }
+	public List<MultipartFile> getFiles() {
+		return files;
+	}
+	public void setFiles(List<MultipartFile> files) {
+		this.files = files;
+	}
 }

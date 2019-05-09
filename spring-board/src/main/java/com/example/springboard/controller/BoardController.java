@@ -2,6 +2,8 @@ package com.example.springboard.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,9 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.springboard.service.BoardService;
 import com.example.springboard.vo.Board;
+import com.example.springboard.vo.BoardRequest;
 
 @Controller
 public class BoardController {
@@ -28,12 +32,15 @@ public class BoardController {
     
     // 입력(액션) 요청
     @PostMapping(value="/boardAdd")
-    public String boardAdd(Board board) {
+    public String boardAdd(BoardRequest boardRequest,  HttpServletRequest request) {
         System.out.println("boardAdd 요청");
     	//커맨드 객체 -> 필드=input type name -> setter
-        boardService.addBoard(board);
+        
+        //request는 servletAPI에 종속되어 controller로 인식, service와 controller의 layer를 구분할 수 없다
+		String path = request.getSession().getServletContext().getRealPath("/index.html");
+        boardService.addBoard(boardRequest, path);
         return "redirect:/boardList"; // 글입력후 "/boardList"로 리다이렉트(재요청)
-    }
+    }    
     
     // 리스트 요청
     @GetMapping(value="/boardList")
